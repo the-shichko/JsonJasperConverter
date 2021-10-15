@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonJasperConverter", "JsonJasperConverter\JsonJasperConverter.csproj", "{3546E617-F0D6-4416-8E53-EF8E82B55823}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{BEEA3049-6BC1-45BC-B3D9-933F870394E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3546E617-F0D6-4416-8E53-EF8E82B55823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3546E617-F0D6-4416-8E53-EF8E82B55823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3546E617-F0D6-4416-8E53-EF8E82B55823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3546E617-F0D6-4416-8E53-EF8E82B55823}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEEA3049-6BC1-45BC-B3D9-933F870394E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEEA3049-6BC1-45BC-B3D9-933F870394E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEEA3049-6BC1-45BC-B3D9-933F870394E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEEA3049-6BC1-45BC-B3D9-933F870394E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
