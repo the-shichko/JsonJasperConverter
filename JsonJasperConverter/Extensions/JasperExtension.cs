@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
@@ -26,7 +27,7 @@ namespace JsonJasperConverter.Extensions
         {
             var properties = jComponent.GetType()
                 .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .OrderBy(x => ((JPositionAttribute)x.GetCustomAttribute(typeof(JPositionAttribute)))?.Position);
+                .OrderBy(x => ((JPositionAttribute)x.GetCustomAttribute(typeof(JPositionAttribute)))?.Position).ToList();
 
             var mainClassName = GetJasperName(jComponent);
 
@@ -40,10 +41,18 @@ namespace JsonJasperConverter.Extensions
                     : jComp.GetType().Name.FirstCharToLowerCase());
             }
 
-            var props = properties.Where(x => x.GetCustomAttribute(typeof(JTagAttribute)) == null).Aggregate(
-                string.Empty,
-                (current, property) =>
-                    current + $"{GetJasperName(property)}=\"{property.GetValue(jComponent, null)}\" ");
+            var props = string.Empty;
+            foreach (var x in properties)
+            {
+                if (x.GetCustomAttribute(typeof(JTagAttribute)) != null) continue;
+                
+                var value = x.GetValue(jComponent, null);
+                var valueStr = value?.ToString();
+
+                if (value is bool b)
+                    valueStr = b.ToString().FirstCharToLowerCase();
+                props += $"{GetJasperName(x)}=\"{valueStr}\" ";
+            }
 
             var tags = string.Empty;
             foreach (var tagProp in properties.Where(x => x.GetCustomAttribute(typeof(JTagAttribute)) != null))

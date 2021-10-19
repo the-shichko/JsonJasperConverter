@@ -11,6 +11,8 @@ namespace JsonJasperConverter.Models
         public string Value { get; set; }
 
         public override string ComponentName { get; set; } = nameof(TextField);
+        public Border Border { get; set; }
+        public TextProperties TextProperties { get; set; }
 
         public override IJComponent ConvertToJasper()
         {
@@ -24,6 +26,8 @@ namespace JsonJasperConverter.Models
                     Y = Y,
                     Properties = new List<JasperProperty>().AddPixelProperties()
                 },
+                Box = (JasperBox)Border?.ConvertToJasper(),
+                TextElement = (JasperTextElement)TextProperties?.ConvertToJasper(),
                 TextFieldExpression = Value
             };
         }

@@ -6,6 +6,7 @@ namespace JsonJasperConverter.Models
 {
     public class Frame : IJasperConvertable
     {
+        public string EditorData { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
 

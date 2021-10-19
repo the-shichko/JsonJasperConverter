@@ -19,21 +19,43 @@ namespace TestApp
                 Width = 300,
                 Components = new List<IJasperConvertable>
                 {
-                    new StaticText { Height = 100, Value = "Славик", Width = 100, X = 10, Y = 10 },
-                    new StaticText { Height = 50, Value = "Курганов", Width = 100, X = 10, Y = 100 },
+                    new TextField
+                    {
+                        Height = 100, Value = "Test", Width = 100, X = 10, Y = 10,
+                        Border = new Border
+                        {
+                            Width = 5,
+                            Padding = 10
+                        },
+                        ComponentName = "textField",
+                        TextProperties = new TextProperties
+                        {
+                            Alignment = new Alignment
+                            {
+                                Horizontal = "Right",
+                                Vertical = "Middle"
+                            },
+                            Font = new Font
+                            {
+                                Name = "Bell MT",
+                                Size = 16,
+                                IsBold = true
+                            }
+                        }
+                    },
                 },
                 Fields = new[] { "name" }
             };
-            
+
             // serialization
             var json = JsonConvert.SerializeObject(frontFrame);
-            
+
             //back to frame from "front"
             var frame = json.ToJasperConvertableFrame();
-            
+
             //convert to jrxml
             var jrxml = frame.ConvertFrameToJasper();
-            
+
             Console.WriteLine(jrxml);
             Console.ReadKey();
         }
