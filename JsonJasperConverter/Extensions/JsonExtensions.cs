@@ -20,11 +20,16 @@ namespace JsonJasperConverter.Extensions
             foreach (var propertyInfo in frame.GetType().GetProperties().Where(x => x.PropertyType.IsValueType))
             {
                 propertyInfo.SetValue(frame,
-                    Convert.ChangeType(frameJObject[propertyInfo.Name], propertyInfo.PropertyType));
+                    Convert.ChangeType(
+                        frameJObject.GetValue(propertyInfo.Name, StringComparison.CurrentCultureIgnoreCase),
+                        propertyInfo.PropertyType));
             }
 
-            frame.Components = ToJasperConvertable(JsonConvert.SerializeObject(frameJObject["Components"]));
-            frame.Fields = frameJObject["Fields"]?.ToObject<List<string>>();
+            frame.Components =
+                ToJasperConvertable(JsonConvert.SerializeObject(frameJObject.GetValue("Components",
+                    StringComparison.CurrentCultureIgnoreCase)));
+            frame.Fields = frameJObject.GetValue("Fields", StringComparison.CurrentCultureIgnoreCase)
+                ?.ToObject<List<string>>();
             return frame;
         }
 
@@ -41,8 +46,9 @@ namespace JsonJasperConverter.Extensions
             if (!(jObjects is JArray array)) throw new Exception("json is not jArray");
 
             list.AddRange(from item in array
-                let type = JObject.Parse(JsonConvert.SerializeObject(item))["ComponentName"]
-                let typeClass = Type.GetType($"JsonJasperConverter.Models.{type}") ??
+                let type = JObject.Parse(JsonConvert.SerializeObject(item))
+                    .GetValue("ComponentName", StringComparison.CurrentCultureIgnoreCase)
+                let typeClass = Type.GetType($"JsonJasperConverter.Models.{type.ToString().FirstCharToUpperCase()}") ??
                                 throw new Exception(
                                     "Cannot found class. Class must be in namespace JsonJasperConverter.Models.YourClass")
                 select item.ToObject(typeClass) as IJasperConvertable);

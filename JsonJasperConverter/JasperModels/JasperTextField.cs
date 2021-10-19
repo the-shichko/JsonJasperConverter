@@ -8,6 +8,7 @@ namespace JsonJasperConverter.JasperModels
         private string _textField;
 
         [JTag]
+        [JPosition(1)]
         public string TextFieldExpression
         {
             get => $"<![CDATA[{_textField}]]>";

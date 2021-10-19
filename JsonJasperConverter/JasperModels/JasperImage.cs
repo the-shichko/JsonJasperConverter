@@ -8,6 +8,7 @@ namespace JsonJasperConverter.JasperModels
         private string _image;
 
         [JTag]
+        [JPosition(1)]
         public string ImageExpression
         {
             get => $"<![CDATA[{_image}]]>";

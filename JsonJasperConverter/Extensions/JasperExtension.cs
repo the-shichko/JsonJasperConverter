@@ -16,7 +16,7 @@ namespace JsonJasperConverter.Extensions
             report.PageWidth = frame.Width;
             report.ColumnWidth = frame.Width;
             report.PageHeight = frame.Height;
-            report.Fields = frame.Fields.Select(x => new JasperField { Name = x });
+            report.Fields = frame.Fields?.Select(x => new JasperField { Name = x });
             report.Details = new List<JasperDetail> { (JasperDetail)frame.ConvertToJasper() };
 
             return $"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n{report.ConvertComponentToJrxml()}";
