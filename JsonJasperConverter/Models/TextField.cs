@@ -14,7 +14,7 @@ namespace JsonJasperConverter.Models
         public string Value { get; set; }
 
         public override string ComponentName { get; set; } = nameof(TextField);
-        public Border Border { get; set; }
+        public TextBorder Border { get; set; }
         public string Color { get; set; }
         public TextProperties TextProperties { get; set; }
 

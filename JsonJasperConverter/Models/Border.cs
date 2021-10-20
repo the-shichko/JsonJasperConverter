@@ -4,12 +4,9 @@ using JsonJasperConverter.JasperModels.JasperProperties;
 
 namespace JsonJasperConverter.Models
 {
-    public class Border : IJasperConvertable
+    public class TextBorder : DefaultBorder, IJasperConvertable
     {
         public int Padding { get; set; }
-        public string Color { get; set; }
-        public double Width { get; set; }
-
         public IJComponent ConvertToJasper()
         {
             var jasper = new JasperPositionPen

@@ -9,23 +9,24 @@ using JsonJasperConverter.JasperModels.JasperProperties;
 namespace JsonJasperConverter.Models
 {
     [Serializable]
-    public class StaticText : BasicComponent
+    public class StaticText : TextField
     {
         public override string ComponentName { get; set; } = nameof(StaticText);
-        public string Value { get; set; }
-
         public override IJComponent ConvertToJasper()
         {
             return new JasperStaticText
             {
-                ReportElement = new JasperReportElement
+                ReportElement = new JasperModeReportElement
                 {
                     X = X,
                     Height = Height,
                     Width = Width,
                     Y = Y,
+                    ForeColor = Color,
                     Properties = new List<JasperProperty>().AddMillimeterProperties()
                 },
+                Box = (JasperBox)Border?.ConvertToJasper(),
+                TextElement = (JasperTextElement)TextProperties?.ConvertToJasper(),
                 Text = Value
             };
         }

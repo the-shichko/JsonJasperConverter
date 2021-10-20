@@ -23,10 +23,9 @@ namespace JsonJasperConverter.Extensions
                 x.GetCustomAttribute(typeof(JPropertyIgnoreAttribute)) == null &&
                 (x.PropertyType.IsValueType || x.PropertyType == typeof(string))))
             {
-                propertyInfo.SetValue(frame,
-                    Convert.ChangeType(
-                        frameJObject.GetValue(propertyInfo.Name, StringComparison.CurrentCultureIgnoreCase),
-                        propertyInfo.PropertyType));
+                var jProp = frameJObject.GetValue(propertyInfo.Name, StringComparison.CurrentCultureIgnoreCase);
+                if (jProp != null)
+                    propertyInfo.SetValue(frame, Convert.ChangeType(jProp, propertyInfo.PropertyType));
             }
 
             frame.Components =

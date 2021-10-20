@@ -9,33 +9,34 @@ using JsonJasperConverter.JasperModels.JasperProperties;
 namespace JsonJasperConverter.Models
 {
     [Serializable]
-    public class Line : BasicComponent
+    public class Rectangle : BasicComponent
     {
-        public int X2 { get; set; }
-        public int Y2 { get; set; }
-        public string Color { get; set; } = "#FFFFFF";
-        public string Style { get; set; } = "Solid";
-        public override string ComponentName { get; set; } = nameof(Line);
+        public override string ComponentName { get; set; } = nameof(Rectangle);
+        public DefaultBorder Border { get; set; }
+        public int Radius { get; set; }
+        public string Color { get; set; }
+
         public override IJComponent ConvertToJasper()
         {
-            return new JasperLine
+            return new JasperRectangle
             {
-                Direction = Y2 - Y < 0 ? "BottomUp" : "TopDown",
+                Radius = Radius,
                 ReportElement = new JasperModeReportElement
                 {
                     X = X,
-                    Y = Y - (Y2 - Y < 0 ? Math.Abs(Y2 - Y) : 0),
-                    Height = Y2 - Y == 0 ? 1 : Math.Abs(Y2 - Y),
-                    Width = X2 - X == 0 ? 1 : X2 - X,
+                    Y = Y,
+                    BackColor = Color,
+                    Height = Height,
+                    Width = Width,
                     Properties = new List<JasperProperty>().AddMillimeterProperties()
                 },
                 GraphicElement = new JasperGraphicElement
                 {
                     Pen = new JasperPositionPen
                     {
-                        LineWidth = Width,
-                        LineStyle = Style,
-                        LineColor = Color
+                        LineColor = Border.Color,
+                        LineStyle = Border.Style,
+                        LineWidth = Border.Width
                     }
                 }
             };
