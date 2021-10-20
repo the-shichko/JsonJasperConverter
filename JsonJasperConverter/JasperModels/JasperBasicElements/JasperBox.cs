@@ -1,6 +1,8 @@
 ﻿using JsonJasperConverter.Attributes;
+using JsonJasperConverter.JasperModels.BaseJasper;
+using JsonJasperConverter.JasperModels.JasperProperties;
 
-namespace JsonJasperConverter.JasperModels
+namespace JsonJasperConverter.JasperModels.JasperBasicElements
 {
     [JProperty("box")]
     public class JasperBox : IJComponent

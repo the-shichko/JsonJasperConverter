@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using JsonJasperConverter.Attributes;
+﻿using JsonJasperConverter.Attributes;
+using JsonJasperConverter.JasperModels.BaseJasper;
 
-namespace JsonJasperConverter.JasperModels
+namespace JsonJasperConverter.JasperModels.JasperProperties
 {
     [JProperty("reportElement")]
     public class JasperReportElement : BaseUuidComponent
@@ -13,16 +13,17 @@ namespace JsonJasperConverter.JasperModels
     }
 
     [JProperty("reportElement")]
-    public class JasperFrameReportElement : JasperReportElement
+    public class JasperModeReportElement : JasperReportElement
     {
-        public JasperFrameReportElement()
+        public JasperModeReportElement()
         {
             X = 0;
             Y = 0;
             Properties = new[] { new JasperProperty { Name = "com.jaspersoft.studio.layout" } };
         }
 
-        [JProperty("backcolor")] public string BackColor { get; set; }
+        [JProperty("forecolor")] public string ForeColor { get; set; } = "#000000";
+        [JProperty("backcolor")] public string BackColor { get; set; } = "#FFFFFF";
         [JProperty("positionType")] public string PositionType { get; set; } = "FixRelativeToBottom";
 
         private string _mode = "Opaque";

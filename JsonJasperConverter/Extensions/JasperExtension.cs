@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using JsonJasperConverter.Attributes;
 using JsonJasperConverter.JasperModels;
+using JsonJasperConverter.JasperModels.BaseJasper;
+using JsonJasperConverter.JasperModels.JasperBasicElements;
+using JsonJasperConverter.JasperModels.JasperProperties;
 using JsonJasperConverter.Models;
 
 namespace JsonJasperConverter.Extensions

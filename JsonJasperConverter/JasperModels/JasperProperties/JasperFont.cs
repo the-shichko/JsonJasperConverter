@@ -1,6 +1,7 @@
 ﻿using JsonJasperConverter.Attributes;
+using JsonJasperConverter.JasperModels.BaseJasper;
 
-namespace JsonJasperConverter.JasperModels
+namespace JsonJasperConverter.JasperModels.JasperProperties
 {
     [JProperty("font")]
     public class JasperFont : IJComponent

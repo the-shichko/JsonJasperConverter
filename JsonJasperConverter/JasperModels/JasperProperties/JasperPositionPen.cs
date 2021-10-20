@@ -1,8 +1,9 @@
-﻿using System;
-using JsonJasperConverter.Attributes;
+﻿using JsonJasperConverter.Attributes;
+using JsonJasperConverter.JasperModels.BaseJasper;
 
-namespace JsonJasperConverter.JasperModels
+namespace JsonJasperConverter.JasperModels.JasperProperties
 {
+    [JProperty("pen")]
     public class JasperPositionPen : IJComponent
     {
         public double LineWidth { get; set; }

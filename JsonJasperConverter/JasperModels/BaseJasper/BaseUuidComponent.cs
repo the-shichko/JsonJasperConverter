@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JsonJasperConverter.JasperModels
+namespace JsonJasperConverter.JasperModels.BaseJasper
 {
     public abstract class BaseUuidComponent : BaseComponentWithProperty
     {

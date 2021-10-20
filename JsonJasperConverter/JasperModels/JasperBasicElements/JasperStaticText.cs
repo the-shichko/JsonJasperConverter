@@ -1,6 +1,7 @@
 ﻿using JsonJasperConverter.Attributes;
+using JsonJasperConverter.JasperModels.BaseJasper;
 
-namespace JsonJasperConverter.JasperModels
+namespace JsonJasperConverter.JasperModels.JasperBasicElements
 {
     [JProperty("staticText")]
     public class JasperStaticText : BaseJElement

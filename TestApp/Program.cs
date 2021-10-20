@@ -17,11 +17,7 @@ namespace TestApp
             {
                 Height = 300,
                 Width = 300,
-                BottomMargin = 10,
-                LeftMargin = 10,
-                RightMargin = 10,
-                TopMargin = 10,
-                Color = "transparent",
+                Color = "#732726",
                 Components = new List<IJasperConvertable>
                 {
                     new TextField
@@ -32,6 +28,7 @@ namespace TestApp
                             Width = 5,
                             Padding = 10
                         },
+                        Color = "#732726",
                         ComponentName = "textField",
                         TextProperties = new TextProperties
                         {
@@ -48,6 +45,16 @@ namespace TestApp
                             }
                         }
                     },
+                    new Line
+                    {
+                        Width = 3,
+                        X = 7,
+                        Y = 200,
+                        X2 = 300,
+                        Y2 = 300,
+                        Color = "#17FF9A",
+                        ComponentName = "line"
+                    }
                 },
                 Fields = new[] { "name" }
             };

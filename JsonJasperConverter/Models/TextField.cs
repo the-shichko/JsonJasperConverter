@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using JsonJasperConverter.Extensions;
 using JsonJasperConverter.JasperModels;
+using JsonJasperConverter.JasperModels.BaseJasper;
+using JsonJasperConverter.JasperModels.JasperBasicElements;
+using JsonJasperConverter.JasperModels.JasperProperties;
 
 namespace JsonJasperConverter.Models
 {
@@ -12,18 +15,20 @@ namespace JsonJasperConverter.Models
 
         public override string ComponentName { get; set; } = nameof(TextField);
         public Border Border { get; set; }
+        public string Color { get; set; }
         public TextProperties TextProperties { get; set; }
 
         public override IJComponent ConvertToJasper()
         {
             return new JasperTextField
             {
-                ReportElement = new JasperReportElement
+                ReportElement = new JasperModeReportElement
                 {
                     X = X,
                     Height = Height,
                     Width = Width,
                     Y = Y,
+                    ForeColor = Color,
                     Properties = new List<JasperProperty>().AddMillimeterProperties()
                 },
                 Box = (JasperBox)Border?.ConvertToJasper(),

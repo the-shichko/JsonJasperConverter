@@ -3,6 +3,9 @@ using System.Linq;
 using JsonJasperConverter.Attributes;
 using JsonJasperConverter.Extensions;
 using JsonJasperConverter.JasperModels;
+using JsonJasperConverter.JasperModels.BaseJasper;
+using JsonJasperConverter.JasperModels.JasperBasicElements;
+using JsonJasperConverter.JasperModels.JasperProperties;
 
 namespace JsonJasperConverter.Models
 {
@@ -34,7 +37,7 @@ namespace JsonJasperConverter.Models
                     Frame = new JasperFrame
                     {
                         Components = Components.Select(x => x.ConvertToJasper()),
-                        ReportElement = new JasperFrameReportElement
+                        ReportElement = new JasperModeReportElement
                         {
                             Height = Height - BottomMargin,
                             Width = Width - LeftMargin - RightMargin,

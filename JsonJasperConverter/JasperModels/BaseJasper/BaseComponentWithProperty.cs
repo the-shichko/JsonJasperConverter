@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using JsonJasperConverter.Attributes;
 
-namespace JsonJasperConverter.JasperModels
+namespace JsonJasperConverter.JasperModels.BaseJasper
 {
     public abstract class BaseComponentWithProperty : IJComponent
     {
