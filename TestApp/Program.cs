@@ -17,6 +17,11 @@ namespace TestApp
             {
                 Height = 300,
                 Width = 300,
+                BottomMargin = 10,
+                LeftMargin = 10,
+                RightMargin = 10,
+                TopMargin = 10,
+                Color = "transparent",
                 Components = new List<IJasperConvertable>
                 {
                     new TextField

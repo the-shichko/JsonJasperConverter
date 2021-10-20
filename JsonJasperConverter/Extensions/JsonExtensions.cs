@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Reflection;
+using JsonJasperConverter.Attributes;
 using JsonJasperConverter.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -17,7 +19,9 @@ namespace JsonJasperConverter.Extensions
 
             if (frameJObject == null) throw new Exception("JObject is null");
 
-            foreach (var propertyInfo in frame.GetType().GetProperties().Where(x => x.PropertyType.IsValueType))
+            foreach (var propertyInfo in frame.GetType().GetProperties().Where(x =>
+                x.GetCustomAttribute(typeof(JPropertyIgnoreAttribute)) == null &&
+                (x.PropertyType.IsValueType || x.PropertyType == typeof(string))))
             {
                 propertyInfo.SetValue(frame,
                     Convert.ChangeType(

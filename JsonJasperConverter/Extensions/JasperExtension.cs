@@ -17,6 +17,10 @@ namespace JsonJasperConverter.Extensions
             report.PageWidth = frame.Width;
             report.ColumnWidth = frame.Width;
             report.PageHeight = frame.Height;
+            report.BottomMargin = frame.BottomMargin;
+            report.TopMargin = frame.TopMargin;
+            report.LeftMargin = frame.LeftMargin;
+            report.RightMargin = frame.RightMargin;
             report.Fields = frame.Fields?.Select(x => new JasperField { Name = x });
             report.Details = new List<JasperDetail> { (JasperDetail)frame.ConvertToJasper() };
 
@@ -79,7 +83,7 @@ namespace JsonJasperConverter.Extensions
             return $"<{mainClassName} {props}{(can ? $">{tags}</{mainClassName}>" : "/>")}";
         }
 
-        public static IEnumerable<JasperProperty> AddPixelProperties(this List<JasperProperty> sender)
+        public static IEnumerable<JasperProperty> AddMillimeterProperties(this List<JasperProperty> sender)
         {
             sender.AddRange(
                 new[]
@@ -87,22 +91,22 @@ namespace JsonJasperConverter.Extensions
                     new JasperProperty
                     {
                         Name = "com.jaspersoft.studio.unit.width",
-                        Value = "pixel"
+                        Value = "mm"
                     },
                     new JasperProperty
                     {
                         Name = "com.jaspersoft.studio.unit.height",
-                        Value = "pixel"
+                        Value = "mm"
                     },
                     new JasperProperty
                     {
                         Name = "com.jaspersoft.studio.unit.y",
-                        Value = "pixel"
+                        Value = "mm"
                     },
                     new JasperProperty
                     {
                         Name = "com.jaspersoft.studio.unit.x",
-                        Value = "pixel"
+                        Value = "mm"
                     }
                 });
             return sender;

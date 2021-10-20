@@ -1,17 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using JsonJasperConverter.Attributes;
+using JsonJasperConverter.Extensions;
 using JsonJasperConverter.JasperModels;
 
 namespace JsonJasperConverter.Models
 {
     public class Frame : IJasperConvertable
     {
-        public string EditorData { get; set; }
+        [JPropertyIgnore] public string EditorData { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
+        public string Color { get; set; } = "#FFFFFF";
+        public int LeftMargin { get; set; } = 0;
+        public int RightMargin { get; set; } = 0;
+        public int TopMargin { get; set; } = 0;
+        public int BottomMargin { get; set; } = 0;
 
         public IEnumerable<IJasperConvertable> Components { get; set; }
-        public IEnumerable<string> Fields { get; set; } 
+        public IEnumerable<string> Fields { get; set; }
 
         /// <summary>
         /// Return JasperBand object
@@ -23,14 +30,16 @@ namespace JsonJasperConverter.Models
             {
                 Band = new JasperBand
                 {
-                    Height = Height,
+                    Height = Height - BottomMargin,
                     Frame = new JasperFrame
                     {
                         Components = Components.Select(x => x.ConvertToJasper()),
                         ReportElement = new JasperFrameReportElement
                         {
-                            Height = Height,
-                            Width = Width
+                            Height = Height - BottomMargin,
+                            Width = Width - LeftMargin - RightMargin,
+                            BackColor = Color,
+                            Properties = new List<JasperProperty>().AddMillimeterProperties(),
                         }
                     }
                 }

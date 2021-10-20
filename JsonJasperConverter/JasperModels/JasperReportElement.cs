@@ -21,7 +21,16 @@ namespace JsonJasperConverter.JasperModels
             Y = 0;
             Properties = new[] { new JasperProperty { Name = "com.jaspersoft.studio.layout" } };
         }
+
         [JProperty("backcolor")] public string BackColor { get; set; }
         [JProperty("positionType")] public string PositionType { get; set; } = "FixRelativeToBottom";
+
+        private string _mode = "Opaque";
+
+        public string Mode
+        {
+            get => BackColor.ToLower() == "transparent" ? "Transparent" : _mode;
+            set => _mode = value;
+        }
     }
 }

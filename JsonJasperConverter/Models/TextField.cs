@@ -24,7 +24,7 @@ namespace JsonJasperConverter.Models
                     Height = Height,
                     Width = Width,
                     Y = Y,
-                    Properties = new List<JasperProperty>().AddPixelProperties()
+                    Properties = new List<JasperProperty>().AddMillimeterProperties()
                 },
                 Box = (JasperBox)Border?.ConvertToJasper(),
                 TextElement = (JasperTextElement)TextProperties?.ConvertToJasper(),
