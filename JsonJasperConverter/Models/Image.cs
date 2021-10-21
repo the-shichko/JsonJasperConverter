@@ -10,9 +10,10 @@ namespace JsonJasperConverter.Models
     public class Image : BasicComponent
     {
         public string ValueUrl { get; set; }
-        public byte[] ValueBase64 { get; set; }
+        public string ValueBase64 { get; set; }
 
         public override string ComponentName { get; set; } = nameof(Image);
+        public ComponentBorder Border { get; set; }
 
         public override IJComponent ConvertToJasper()
         {
@@ -25,7 +26,8 @@ namespace JsonJasperConverter.Models
                     Width = Width,
                     Y = Y
                 },
-                ImageExpression = ValueUrl
+                ImageExpression = ValueUrl,
+                Box = (JasperBox)Border?.ConvertToJasper()
             };
         }
     }
