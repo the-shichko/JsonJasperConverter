@@ -17,7 +17,7 @@ namespace JsonJasperConverter.Models
                 Font = new JasperFont
                 {
                     Size = Font.Size == 0 ? 15 : Font.Size,
-                    FontName = Font.Name ?? "Arial Narrow",
+                    FontName = Font.Name ?? "DejaVu Sans",
                     IsBold = Font.IsBold,
                     IsItalic = Font.IsItalic,
                     IsUnderline = Font.IsUnderline,

@@ -2,7 +2,7 @@
 {
     public class Font
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = "DejaVu Sans";
         public int Size { get; set; }
         public bool IsBold { get; set; }
         public bool IsItalic { get; set; }

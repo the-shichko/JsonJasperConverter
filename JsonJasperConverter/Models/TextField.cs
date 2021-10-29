@@ -24,10 +24,10 @@ namespace JsonJasperConverter.Models
             {
                 ReportElement = new JasperModeReportElement
                 {
-                    X = X,
-                    Height = Height,
-                    Width = Width,
-                    Y = Y,
+                    X = X.ToPixelSize(),
+                    Height = Height.ToPixelSize(),
+                    Width = Width.ToPixelSize(),
+                    Y = Y.ToPixelSize(),
                     ForeColor = Color,
                     Properties = new List<JasperProperty>().AddMillimeterProperties()
                 },

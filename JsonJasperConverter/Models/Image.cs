@@ -1,4 +1,5 @@
 ﻿using System;
+using JsonJasperConverter.Extensions;
 using JsonJasperConverter.JasperModels;
 using JsonJasperConverter.JasperModels.BaseJasper;
 using JsonJasperConverter.JasperModels.JasperBasicElements;
@@ -21,10 +22,10 @@ namespace JsonJasperConverter.Models
             {
                 ReportElement = new JasperReportElement
                 {
-                    X = X,
-                    Height = Height,
-                    Width = Width,
-                    Y = Y
+                    X = X.ToPixelSize(),
+                    Height = Height.ToPixelSize(),
+                    Width = Width.ToPixelSize(),
+                    Y = Y.ToPixelSize()
                 },
                 ImageExpression = ValueUrl,
                 Box = (JasperBox)Border?.ConvertToJasper()

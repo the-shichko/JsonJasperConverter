@@ -23,11 +23,11 @@ namespace JsonJasperConverter.Models
                 Radius = Radius,
                 ReportElement = new JasperModeReportElement
                 {
-                    X = X,
-                    Y = Y,
+                    X = X.ToPixelSize(),
+                    Y = Y.ToPixelSize(),
                     BackColor = Color,
-                    Height = Height,
-                    Width = Width,
+                    Height = Height.ToPixelSize(),
+                    Width = Width.ToPixelSize(),
                     Properties = new List<JasperProperty>().AddMillimeterProperties()
                 },
                 GraphicElement = new JasperGraphicElement

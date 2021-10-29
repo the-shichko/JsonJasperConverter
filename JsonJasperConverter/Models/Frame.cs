@@ -12,8 +12,8 @@ namespace JsonJasperConverter.Models
     public class Frame : IJasperConvertable
     {
         [JPropertyIgnore] public string EditorData { get; set; }
-        public int Height { get; set; }
-        public int Width { get; set; }
+        public double Height { get; set; }
+        public double Width { get; set; }
         public string Color { get; set; } = "#FFFFFF";
         public int LeftMargin { get; set; } = 0;
         public int RightMargin { get; set; } = 0;
@@ -33,14 +33,14 @@ namespace JsonJasperConverter.Models
             {
                 Band = new JasperBand
                 {
-                    Height = Height - BottomMargin,
+                    Height = (Height - BottomMargin).ToPixelSize(),
                     Frame = new JasperFrame
                     {
                         Components = Components.Select(x => x.ConvertToJasper()),
                         ReportElement = new JasperModeReportElement
                         {
-                            Height = Height - BottomMargin,
-                            Width = Width - LeftMargin - RightMargin,
+                            Height = (Height - BottomMargin).ToPixelSize(),
+                            Width = (Width - LeftMargin - RightMargin).ToPixelSize(),
                             BackColor = Color,
                             Properties = new List<JasperProperty>().AddMillimeterProperties(),
                         }

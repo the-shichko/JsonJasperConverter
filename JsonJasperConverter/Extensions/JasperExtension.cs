@@ -16,9 +16,9 @@ namespace JsonJasperConverter.Extensions
         public static string ConvertFrameToJasper(this Frame frame)
         {
             var report = JasperReport.CreateBase();
-            report.PageWidth = frame.Width;
-            report.ColumnWidth = frame.Width;
-            report.PageHeight = frame.Height;
+            report.PageWidth = frame.Width.ToPixelSize();
+            report.ColumnWidth = frame.Width.ToPixelSize();
+            report.PageHeight = frame.Height.ToPixelSize();
             report.BottomMargin = frame.BottomMargin;
             report.TopMargin = frame.TopMargin;
             report.LeftMargin = frame.LeftMargin;
@@ -75,7 +75,7 @@ namespace JsonJasperConverter.Extensions
                         break;
                     case string strItem:
                         var tagStart = GetJasperName(tagProp);
-                        tags += $"<{tagStart}>{tag}</{tagStart}>";
+                        tags += $"<{tagStart}>{strItem}</{tagStart}>";
                         break;
                 }
             }

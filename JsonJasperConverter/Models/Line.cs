@@ -11,8 +11,8 @@ namespace JsonJasperConverter.Models
     [Serializable]
     public class Line : BasicComponent
     {
-        public int X2 { get; set; }
-        public int Y2 { get; set; }
+        public double X2 { get; set; }
+        public double Y2 { get; set; }
         public string Color { get; set; } = "#FFFFFF";
         public string Style { get; set; } = "Solid";
         public override string ComponentName { get; set; } = nameof(Line);
@@ -23,10 +23,10 @@ namespace JsonJasperConverter.Models
                 Direction = Y2 - Y < 0 ? "BottomUp" : "TopDown",
                 ReportElement = new JasperModeReportElement
                 {
-                    X = X,
-                    Y = Y - (Y2 - Y < 0 ? Math.Abs(Y2 - Y) : 0),
-                    Height = Y2 - Y == 0 ? 1 : Math.Abs(Y2 - Y),
-                    Width = X2 - X == 0 ? 1 : X2 - X,
+                    X = X.ToPixelSize(),
+                    Y = (Y - (Y2 - Y < 0 ? Math.Abs(Y2 - Y) : 0)).ToPixelSize(),
+                    Height = (Y2 - Y == 0 ? 1 : Math.Abs(Y2 - Y)).ToPixelSize(),
+                    Width = (X2 - X == 0 ? 1 : X2 - X).ToPixelSize(),
                     Properties = new List<JasperProperty>().AddMillimeterProperties()
                 },
                 GraphicElement = new JasperGraphicElement
