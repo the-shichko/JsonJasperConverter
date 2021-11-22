@@ -14,7 +14,7 @@ namespace JsonJasperConverter.JasperModels.JasperBasicElements
         [JPosition(2)]
         public string ImageExpression
         {
-            get => $"<![CDATA[\"{_image.Replace("\\", "/")}\"]]>";
+            get => $"<![CDATA[\"{_image?.Replace("\\", "/")}\"]]>";
             set => _image = value;
         }
     }
