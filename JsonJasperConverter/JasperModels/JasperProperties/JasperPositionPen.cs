@@ -9,7 +9,7 @@ namespace JsonJasperConverter.JasperModels.JasperProperties
         public double LineWidth { get; set; }
         public string LineStyle { get; set; } = "Solid";
         public string LineColor { get; set; } = "#000000";
-        
+
         public JasperTopPen CreateTop()
         {
             return new JasperTopPen
@@ -19,6 +19,7 @@ namespace JsonJasperConverter.JasperModels.JasperProperties
                 LineWidth = LineWidth
             };
         }
+
         public JasperLeftPen CreateLeft()
         {
             return new JasperLeftPen
@@ -28,7 +29,7 @@ namespace JsonJasperConverter.JasperModels.JasperProperties
                 LineWidth = LineWidth
             };
         }
-        
+
         public JasperBottomPen CreateBottom()
         {
             return new JasperBottomPen
@@ -38,6 +39,7 @@ namespace JsonJasperConverter.JasperModels.JasperProperties
                 LineWidth = LineWidth
             };
         }
+
         public JasperRightPen CreateRight()
         {
             return new JasperRightPen
@@ -47,25 +49,27 @@ namespace JsonJasperConverter.JasperModels.JasperProperties
                 LineWidth = LineWidth
             };
         }
-        
-        
     }
 
+    [JTag(false)]
     [JProperty("topPen")]
     public class JasperTopPen : JasperPositionPen
     {
     }
-    
+
+    [JTag(false)]
     [JProperty("leftPen")]
     public class JasperLeftPen : JasperPositionPen
     {
     }
-    
+
+    [JTag(false)]
     [JProperty("bottomPen")]
     public class JasperBottomPen : JasperPositionPen
     {
     }
-    
+
+    [JTag(false)]
     [JProperty("rightPen")]
     public class JasperRightPen : JasperPositionPen
     {
