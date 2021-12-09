@@ -20,7 +20,7 @@ namespace JsonJasperConverter.Models
 
         public override IJComponent ConvertToJasper()
         {
-            return new JasperTextField
+            return new JasperStaticText
             {
                 ReportElement = new JasperModeReportElement
                 {
@@ -33,7 +33,7 @@ namespace JsonJasperConverter.Models
                 },
                 Box = (JasperBox)Border?.ConvertToJasper(),
                 TextElement = (JasperTextElement)TextProperties?.ConvertToJasper(),
-                TextFieldExpression = Value
+                Text = Value
             };
         }
     }
