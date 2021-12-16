@@ -3,6 +3,7 @@ using JsonJasperConverter.JasperModels.BaseJasper;
 
 namespace JsonJasperConverter.JasperModels.JasperProperties
 {
+    [JTag(false)]
     [JProperty("pen")]
     public class JasperPositionPen : IJComponent
     {

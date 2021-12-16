@@ -18,15 +18,20 @@ namespace JsonJasperConverter.Models
         public override string ComponentName { get; set; } = nameof(Line);
         public override IJComponent ConvertToJasper()
         {
+            var localX = X.ToPixelSize();
+            var localX2 = X2.ToPixelSize();
+            var localY = Y.ToPixelSize();
+            var localY2 = Y2.ToPixelSize();
+            
             return new JasperLine
             {
                 Direction = Y2 - Y < 0 ? "BottomUp" : "TopDown",
                 ReportElement = new JasperModeReportElement
                 {
-                    X = X.ToPixelSize(),
-                    Y = (Y - (Y2 - Y < 0 ? Math.Abs(Y2 - Y) : 0)).ToPixelSize(),
-                    Height = (Y2 - Y == 0 ? 1 : Math.Abs(Y2 - Y)).ToPixelSize(),
-                    Width = (X2 - X == 0 ? 1 : X2 - X).ToPixelSize(),
+                    X = localX,
+                    Y = localY - (localY2 - localY < 0 ? Math.Abs(localY2 - localY) : 0),
+                    Height = localY2 - localY == 0 ? 1 : Math.Abs(localY2 - localY),
+                    Width = localX2 - localX == 0 ? 1 : localX2 - localX,
                     Properties = new List<JasperProperty>().AddMillimeterProperties()
                 },
                 GraphicElement = new JasperGraphicElement
