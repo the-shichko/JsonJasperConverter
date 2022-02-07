@@ -1,5 +1,4 @@
 ﻿using System;
-using JsonJasperConverter.JasperModels;
 using JsonJasperConverter.JasperModels.BaseJasper;
 using JsonJasperConverter.JasperModels.JasperProperties;
 

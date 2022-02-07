@@ -1,5 +1,4 @@
-﻿using JsonJasperConverter.JasperModels;
-using JsonJasperConverter.JasperModels.BaseJasper;
+﻿using JsonJasperConverter.JasperModels.BaseJasper;
 
 namespace JsonJasperConverter.Models
 {
